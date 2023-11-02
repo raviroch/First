@@ -6,7 +6,7 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     env:
-      TAG: python-check
+      TAG: pythoncheck
       PAT: ${{ secrets.GITHUB_TOKEN }}
       USER: raviroch
       REGISTRY: ghcr.io
