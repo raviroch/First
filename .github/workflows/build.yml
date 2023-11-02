@@ -5,6 +5,9 @@ on: [push]
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       TAG: pythoncheck
       PAT: ${{ secrets.GITHUB_TOKEN }}
