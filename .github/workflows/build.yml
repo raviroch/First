@@ -1,6 +1,6 @@
 name: Build and publish a Docker image
 
-on: [push]
+on: push
 
 jobs:
   build-and-push-image:
@@ -9,7 +9,7 @@ jobs:
       contents: read
       packages: write
     env:
-      TAG: pythoncheck
+      TAG: python-check
       PAT: ${{ secrets.GITHUB_TOKEN }}
       USER: raviroch
       REGISTRY: ghcr.io
