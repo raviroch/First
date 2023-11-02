@@ -21,6 +21,6 @@ jobs:
 
       - name: Login to GHCR
         run: |
-          echo ${{ env.PAT }} | docker login ${{ env.REGISTRY }} -u ${{ env.USER }} --password-stdin
-          docker tag ${{ env.TAG }} ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.TAG }}:${{ env.VERSION }}
-          docker push ${{ env.REGISTRY }}/${{ env.USER }}/${{ env.TAG }}:${{ env.VERSION }}
+          echo $PAT | docker login ${{ env.REGISTRY }} -u $USER --password-stdin
+          docker tag $TAG ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
+          docker push ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
