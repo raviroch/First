@@ -29,7 +29,7 @@ jobs:
           echo $PAT | docker login ${{ env.REGISTRY }} -u $USER --password-stdin
           docker push ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
 
-      - name: trivyscan
+     trivyscan:
         uses: bh-ent-tech/bh-shared-workflow/.github/workflows/trivyscan.yaml@main
         with:
           image_name: ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
