@@ -29,15 +29,15 @@ jobs:
           echo $PAT | docker login ${{ env.REGISTRY }} -u $USER --password-stdin
           docker push ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
 
-     trivyscan:
-        uses: bh-ent-tech/bh-shared-workflow/.github/workflows/trivyscan.yaml@main
-        with:
-          image_name: ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
-          reponame: ${{ github.event.repository.name }}
-          version_name: "latest"
-          docker_file_path: "."    
-          Package_lock: "./shared-workflows"
-        secrets: inherit
+    trivyscan:
+      uses: bh-ent-tech/bh-shared-workflow/.github/workflows/trivyscan.yaml@main
+      with:
+        image_name: ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
+        reponame: ${{ github.event.repository.name }}     
+        version_name: "latest"
+        docker_file_path: "."    
+        Package_lock: "./shared-workflows"
+      secrets: inherit
           
             
           
