@@ -34,7 +34,7 @@ jobs:
           with:
             image_name: ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
             reponame: ${{ github.event.repository.name }}
-            version_name: latest
+            version_name: "latest"
             docker_file_path: "."
             Package_lock: "./shared-workflows"
           secrets: inherit
