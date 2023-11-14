@@ -29,26 +29,26 @@ jobs:
           echo $PAT | docker login ${{ env.REGISTRY }} -u $USER --password-stdin
           docker push ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
 
-      - name: Image Scan
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: '${{ env.REGISTRY }}/${{ env.USER }}/${{ env.TAG }}:${{ env.VERSION }}'
-          security-checks: 'vuln,secret,config'
-          format: 'sarif'
-          output: 'trivy-image-results.sarif'
-          severity: 'CRITICAL,HIGH'
+  #    - name: Image Scan
+  #      uses: aquasecurity/trivy-action@master
+  #      with:
+  #        image-ref: '${{ env.REGISTRY }}/${{ env.USER }}/${{ env.TAG }}:${{ env.VERSION }}'
+  #        security-checks: 'vuln,secret,config'
+  #        format: 'sarif'
+  #       output: 'trivy-image-results.sarif'
+ #         severity: 'CRITICAL,HIGH'
 
           
- #   trivyscan:
- #       needs: [build-and-push-image]
- #       uses: bh-ent-tech/bh-shared-workflow/.github/workflows/trivyscan.yaml@main
- #       with:
- #         image_name: ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
- #         reponame: ${{ github.event.repository.name }}     
- #         version_name: "latest"
- #         docker_file_path: "."    
- #         Package_lock: "./shared-workflows"
- #       secrets: inherit
+    trivyscan:
+        needs: [build-and-push-image]
+        uses: bh-ent-tech/bh-shared-workflow/.github/workflows/trivyscan.yaml@main
+        with:
+          image_name: ${{ env.REGISTRY }}/$USER/$TAG:${{ env.VERSION }}
+          reponame: ${{ github.event.repository.name }}     
+          version_name: "latest"
+          docker_file_path: "."    
+          Package_lock: "./shared-workflows"
+        secrets: inherit
   
           
             
